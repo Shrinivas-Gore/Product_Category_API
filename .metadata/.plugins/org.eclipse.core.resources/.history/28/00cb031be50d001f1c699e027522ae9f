@@ -1,0 +1,37 @@
+package com.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.app.dto.ProductRequest;
+import com.app.model.Category;
+import com.app.serviceImpl.CategoryServiceImpl;
+import com.app.serviceImpl.ProductServiceImpl;
+
+@SpringBootApplication
+public class ProductCategoryApiApplication {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext run = SpringApplication.run(ProductCategoryApiApplication.class, args);
+		ProductServiceImpl bean = run.getBean(ProductServiceImpl.class);
+		
+		ProductRequest request=new ProductRequest();
+		request.setProductName("Mobile");
+		request.setProductDescription("Nice product");
+		request.setProductPrice(100000.0);
+		request.setCategoryId((long) 2);
+		
+		bean.save(request);
+		
+//		CategoryServiceImpl bean2 = run.getBean(CategoryServiceImpl.class);
+//		
+//		Category c=new Category();
+//		c.setCategoryName("Grocery");
+//		c.setCategoryDescription("Grocery products");
+//		Category save = bean2.save(c);
+//		System.out.println(save);
+//		
+	}
+
+}

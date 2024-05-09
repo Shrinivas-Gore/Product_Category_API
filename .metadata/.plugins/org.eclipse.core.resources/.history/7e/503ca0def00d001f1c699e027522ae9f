@@ -1,0 +1,15 @@
+package com.app.service;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.app.dto.ProductRequest;
+import com.app.model.Product;
+
+public interface ProductService {
+	
+	Page<Product> findAll(Pageable pageable);
+	Long deleteByProductId(Long id);
+	Product findByProductId(Long id);
+	Product save(ProductRequest request);
+}

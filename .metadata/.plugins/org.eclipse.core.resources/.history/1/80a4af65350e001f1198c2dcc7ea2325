@@ -1,0 +1,20 @@
+package com.app.service;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.app.model.Category;
+import com.app.model.Product;
+
+import jakarta.validation.Valid;
+
+public interface CategoryService {
+
+	Category save(Category category);
+	Page<Category> findAll(Pageable pageable);
+	Long deleteByCategoryId(Long id);
+	Category findByCategoryId(Long id);
+	Category update(Long id,Category request);
+	Category getById(Long id);
+	
+}

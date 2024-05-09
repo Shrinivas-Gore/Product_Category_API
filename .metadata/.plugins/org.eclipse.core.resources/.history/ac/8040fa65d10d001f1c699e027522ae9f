@@ -1,0 +1,25 @@
+package com.app.dto;
+
+import java.math.BigDecimal;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lombok.Data;
+
+@Data
+public class ProductRequest {
+
+	    @NotBlank(message = "Name is required")
+	    private String productName;
+
+	    @NotBlank(message = "Description is required")
+	    private String productDescription;
+
+	    @DecimalMin(value = "0.01", message = "Price must be greater than 0")
+	    private BigDecimal productPrice;
+
+	    @NotNull(message = "Category ID is required")
+	    private Long categoryId;
+}

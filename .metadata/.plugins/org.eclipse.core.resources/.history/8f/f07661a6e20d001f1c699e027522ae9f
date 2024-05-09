@@ -1,0 +1,42 @@
+package com.app.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.app.dao.CategoryDao;
+import com.app.model.Category;
+import com.app.model.Product;
+import com.app.service.CategoryService;
+
+@Service
+public class CategoryServiceImpl implements CategoryService{
+
+	@Autowired
+	private CategoryDao categoryDao;
+	
+	@Override
+	public Category save(Category category) {
+		return categoryDao.save(category);
+	}
+
+	@Override
+	public Page<Category> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long deleteByCategoryId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product findByCategoryId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

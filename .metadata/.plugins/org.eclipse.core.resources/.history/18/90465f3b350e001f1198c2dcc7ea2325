@@ -1,0 +1,57 @@
+package com.app.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.app.dao.CategoryDao;
+import com.app.exception.EntityNotFoundException;
+import com.app.model.Category;
+import com.app.service.CategoryService;
+
+@Service
+public class CategoryServiceImpl implements CategoryService {
+
+	@Autowired
+	private CategoryDao categoryDao;
+
+	@Override
+	public Category save(Category category) {
+		return categoryDao.save(category);
+	}
+
+	@Override
+	public Page<Category> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long deleteByCategoryId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Category findByCategoryId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Category update(Long id, Category request) {
+		Category category = categoryDao.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + id));
+
+		category.setCategoryName(request.getCategoryName());
+		category.setCategoryDescription(request.getCategoryDescription());
+
+		return categoryDao.save(category);
+	}
+
+	public Category getById(Long id) {
+		return categoryDao.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + id));
+	}
+
+}
